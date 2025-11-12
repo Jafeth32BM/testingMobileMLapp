@@ -44,6 +44,7 @@ Siendo ```T8GYPZIZZTYPKN5P``` el udid que se necesita para colocarlo en las capa
     automationName: "UiAutomator2",
     newCommandTimeout: 120,
     noReset: true
+}
   
 ```
 **NOTA:** el '#' es un comentario dentro del codigo
