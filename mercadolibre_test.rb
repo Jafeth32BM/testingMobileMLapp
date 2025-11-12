@@ -3,7 +3,9 @@ require 'appium_lib'
 # 1. Definir Desired Capabilities
   caps ={
     platformName: "Android",
-    deviceName: "Pixel_7_Pro", #Nombre del dispositivo o emulador
+    deviceName: "Pixel_7_Pro", #Nombre del emulador
+    # deviceName: "POCO_X7_PRO", #Nombre del dispositivo
+    # udid: "T8GYPZIZZTYPKN5P", #ID del dispositivo (obtenido con adb devices)
     appPackage: "com.mercadolibre",
     appActivity: "com.mercadolibre.splash.SplashActivity",
     automationName: "UiAutomator2",
@@ -76,6 +78,23 @@ else
   puts "No hay ventana de notificaciones. Continuando. . . "
 end
 
+#Condicional meli+
+meliAdd = ':R171:'
+# Guardar elemento
+meliAdd = $driver.find_elements(id: notif)
+# Condicional
+if meliAdd.size > 0
+  puts "Se mostro la pantalla de meli+. Haciendo clic, en Ahora no"
+  # Si encuentra un elemento hacer clic.
+  meliAdd[0].click
+  # Esperar por cambio de pantalla
+  # wait_for_element(:xpath, notif, 5, "Notificaciones cerradas") # Reemplazado por una espera a la barra de búsqueda si fuera necesario
+else
+  #Si no se encuentra, continuar
+  puts "Sin publicidad de meli+. Continuando. . . "
+end
+
+
 #4 Buscar el producto en la barra de busqueda
 searchBar_Id ='com.mercadolibre:id/ui_components_toolbar_title_toolbar'
 inputSearch_Id = 'com.mercadolibre:id/autosuggest_input_search'
@@ -94,7 +113,7 @@ filtros = '(//android.widget.LinearLayout[@resource-id="com.mercadolibre:id/appb
 # CORRECCIÓN DE SINTAXIS
 wait_for_element(:xpath, filtros, 5, "===Aplicando Filtros===")
 $driver.find_element(xpath: filtros).click
-
+sleep 2
 # CORRECCIÓN DE SINTAXIS
 condicion = '//android.view.View[@content-desc="Condición"]'
 wait_for_element(:xpath, condicion, 5, "Condicion...")
