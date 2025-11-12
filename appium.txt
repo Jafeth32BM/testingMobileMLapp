@@ -1,0 +1,8 @@
+[appium]
+platformName = "Android"
+deviceName = "Pixel_7_Pro"
+automationName = "UiAutomator2"
+appPackage = "com.mercadolibre"
+appActivity = "com.mercadolibre.activities.SplashActivity"
+noReset = true
+fullReset = false

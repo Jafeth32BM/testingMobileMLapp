@@ -1,0 +1,9 @@
+{
+  "platformName": "Android",
+  "deviceName": "Pixel_7_Pro",
+  "appPackage": "com.mercadolibre",
+  "appActivity": "com.mercadolibre.splash.SplashActivity",
+  "automationName": "UiAutomator2",
+  "appium:newCommandTimeout": 120,
+  "appium:noReset": true
+}
